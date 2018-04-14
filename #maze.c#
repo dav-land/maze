@@ -16,3 +16,6 @@ void printArr(int arr[8][8],int row, int col){
     }
   }
 }
+
+
+void 
