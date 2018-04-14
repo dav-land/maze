@@ -1,6 +1,6 @@
 # Variables
 CC = gcc
-CFLAGS = -Wall -Wextra -std=cll -pedantic -g
+CFLAGS = -Wall -Wextra -std=c11 -pedantic -g
 LDLIBS = -lm
 PROG = maze_test
 SRC = $(PROG).c maze.c
