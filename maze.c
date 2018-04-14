@@ -21,8 +21,12 @@ int main(){
   char mz[ROW][COL];
   char c;
   int row = 0, col = 0;
+  char fileName[30];
+
+  printf("Please Enter Maze File then Press Enter\n");
+  scanf("%s",fileName);
   
-  maze = fopen("maze.txt","r");
+  maze = fopen(fileName,"r");
   if(maze){
     while((c = getc(maze)) != EOF){
       if(c == '\n')
