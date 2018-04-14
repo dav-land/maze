@@ -4,6 +4,9 @@
 #include <string.h>
 #include "maze.h"
 
+#define MAXMAZESIZE = 900;
+#define SIZE = 1;
+#define NUMELEM = 900;
 
 /*
 The is a function that prints out the array that has been made
@@ -20,11 +23,10 @@ void printArr(int arr[8][8],int row, int col){
 
 
 int loadMaze(){
-  /*
   FILE * mazeFile = NULL;
-  char buff[100];
+  char buff[MAXMAZESIZE];
   char fileName[30];
-  
+  arrayFill(buff);
   memset(buff,0,sizeof(buff));
   
   //asks for user to imput file
@@ -37,9 +39,12 @@ int loadMaze(){
     return -1;
   }
 
-  */
-
-
+  if(SIZE*NUMELEM != fread(buff,SIZE,NUMELEM,mazeFile)){
+    printf("fread failed \n");
+    return -1;
+  }
+  
+  /*
   FILE * maze;
   int const ROW = 8, COL = 8;
   int mz[ROW][COL];
@@ -71,5 +76,10 @@ int loadMaze(){
   }
   fclose(maze);
   return mz;
+  */
+}
 
+void arrayFill(char * arr[]){
+  for(int i = 0; i < MAXMAZESIZE; i ++)
+    arr[i] = '~';
 }

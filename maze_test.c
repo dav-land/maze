@@ -6,7 +6,6 @@
 
 
 int main(){
-
-  int mazeArr = loadMaze();
-  printArr(mazeArr);
+   int mazeArr = loadMaze();
+   printArr(mazeArr);
 }
