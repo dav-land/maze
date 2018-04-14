@@ -24,7 +24,7 @@ void printArr(int arr[8][8],int row, int col){
 /* 
 Finds which elements are used in the array, we defined '~' to be unused
 */
-int findNumMazeElements(int * array, int length) {
+int findNumMazeElements(char * array, int length) {
   int i;
   for(i=0;i<length;i++) {
     if(array[i]=='~') break;
@@ -32,10 +32,12 @@ int findNumMazeElements(int * array, int length) {
   return i;
 }
 
-int loadMaze(){
+int loadCharArrFromFile(){
   FILE * mazeFile = NULL;
   char buff[MAXMAZESIZE];
   char fileName[30];
+  //  int mazeArray[][];
+  
   arrayFill(buff);
   memset(buff,0,sizeof(buff));
   
@@ -49,11 +51,10 @@ int loadMaze(){
     return -1;
   }
 
-  if(SIZE*NUMELEM != fread(buff,SIZE,NUMELEM,mazeFile)){
-    printf("fread failed \n");
-    return -1;
-  }
+  fread(buff,SIZE,NUMELEM,mazeFile);
   
+
+  return 0;
   /*
   FILE * maze;
   int const ROW = 8, COL = 8;

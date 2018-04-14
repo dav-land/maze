@@ -6,6 +6,10 @@
 
 
 int main(){
-   int mazeArr = loadMaze();
-   printArr(mazeArr);
+  char arr[900];
+  loadCharArrFromFile(arr);
+  for(int i = 0; i < 900; i ++)
+    printf("%c", arr[i]);
+  
+  
 }
