@@ -17,3 +17,14 @@ void printArr(int arr[8][8],int row, int col){
     }
   }
 }
+
+/* 
+Finds which elements are used in the array, we defined '~' to be unused
+*/
+int findNumMazeElements(int * array, int length) {
+  int i;
+  for(i=0;i<length;i++) {
+    if(array[i]=='~') break;
+  }
+  return i;
+}
