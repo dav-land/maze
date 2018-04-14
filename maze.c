@@ -4,9 +4,13 @@
 
 
 void printArr(char arr[8][8],int row, int col){
-  for(int i = 0; i < row; i ++)
-    for(int j = 0; j < col; j++)
+  for(int i = 0; i < row; i ++){
+    for(int j = 0; j < col; j++){
       printf("%c",arr[i][j]);
+      if(j+1 == col)
+	printf("\n");
+    }
+  }
 }
 
 
@@ -21,6 +25,8 @@ int main(){
   maze = fopen("maze.txt","r");
   if(maze){
     while((c = getc(maze)) != EOF){
+      if(c == '\n')
+	continue;
       mz[row][col] = c;
       col++;
       if(col == 8){
