@@ -5,7 +5,7 @@
 void printArr(int arr[8][8],int row, int col);
 
 /* load maze from file */
-int loadCharArrFromFile();
+void loadCharArrFromFile(char * buff);
 
 /* fill array with '~' */
 void arrayFill(char * arr);

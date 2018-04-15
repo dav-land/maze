@@ -4,9 +4,9 @@
 #include <string.h>
 #include "maze.h"
 
-#define MAXMAZESIZE = 900;
-#define SIZE = 1;
-#define NUMELEM = 900;
+#define MAXMAZESIZE 900
+#define SIZE 1
+#define NUMELEM 900
 
 /*
 The is a function that prints out the array that has been made
@@ -25,22 +25,22 @@ void printArr(int arr[8][8],int row, int col){
 Finds which elements are used in the array, we defined '~' to be unused
 */
 int findNumMazeElements(char * array, int length) {
-  int i;
+  int i,count = 0;
   for(i=0;i<length;i++) {
-    if(array[i]=='~') break;
+    if(array[i] != '\n')
+      count ++;
+    if(array[i]=='~')
+      break;
   }
-  return i;
+  return count-1;
 }
 
-int loadCharArrFromFile(){
+void loadCharArrFromFile(char * buff){
   FILE * mazeFile = NULL;
-  char buff[MAXMAZESIZE];
   char fileName[30];
-  //  int mazeArray[][];
   
   arrayFill(buff);
-  memset(buff,0,sizeof(buff));
-  
+
   //asks for user to imput file
   printf("Please Enter Maze File then Press Enter\n");
   scanf("%s",fileName);
@@ -48,13 +48,11 @@ int loadCharArrFromFile(){
   mazeFile = fopen(fileName,"r");
   if(!mazeFile){
     printf("File was not correctly oppened");
-    return -1;
+   
   }
 
   fread(buff,SIZE,NUMELEM,mazeFile);
   
-
-  return 0;
   /*
   FILE * maze;
   int const ROW = 8, COL = 8;
@@ -90,7 +88,7 @@ int loadCharArrFromFile(){
   */
 }
 
-void arrayFill(char * arr[]){
+void arrayFill(char * arr){
   for(int i = 0; i < MAXMAZESIZE; i ++)
     arr[i] = '~';
 }
