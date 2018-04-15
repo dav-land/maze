@@ -13,6 +13,6 @@ int main(){
   int sideLength = (int)(sqrt(numMazeElements));
   int mz[sideLength][sideLength];
   createMazeMatrix(arr, numMazeElements, sideLength, mz);
-  printArr(mz,sideLength,sideLength);
+  printArr(sideLength,sideLength,mz);
   
 }

@@ -2,12 +2,12 @@
 #define MAZE_H_
 
 /* Prints a 2D array */
-void printArr(int arr[8][8],int row, int col);
+void printArr(int row, int col,int arr[][col]);
 
 /* load maze from file */
 void loadCharArrFromFile(char * buff);
 
-/* fill array with '~' */
+/* fill array with '~', a blank character*/
 void arrayFill(char * arr);
 
 /* find elements being used */
