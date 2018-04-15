@@ -32,7 +32,7 @@ int findNumMazeElements(char * array, int length) {
     if(array[i]=='~')
       break;
   }
-  return count-1;
+  return i;
 }
 
 void loadCharArrFromFile(char * buff){
@@ -91,4 +91,24 @@ void loadCharArrFromFile(char * buff){
 void arrayFill(char * arr){
   for(int i = 0; i < MAXMAZESIZE; i ++)
     arr[i] = '~';
+}
+
+void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLength]) {
+  int row=0, col=0;
+  char c;
+  for (int i=0; i<length; i++) {
+    c = arr[i];
+    //printf("%c",c);
+    if(c == '\n')
+      continue;
+    if(c == '.')
+      mz[row][col] = 0;
+    else
+      mz[row][col] = 1;
+    col++;
+    if(col == sideLength){
+      row++;
+      col = 0;
+    }
+}
 }

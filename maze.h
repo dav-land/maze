@@ -13,4 +13,7 @@ void arrayFill(char * arr);
 /* find elements being used */
 int findNumMazeElements(char * array, int length); 
 
+/* create maze array */
+void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLength]);
+
 #endif
