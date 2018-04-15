@@ -4,12 +4,14 @@
 #include <string.h>
 #include "maze.h"
 
+
 #define MAXMAZESIZE 900
 #define SIZE 1
 #define NUMELEM 900
 
-/*
-The is a function that prints out the array that has been made
+
+/**
+The is a function that prints out the array that has been made with given dimention
  */
 void printArr(int row, int col,int arr[][col]){
   for(int i = 0; i < row; i ++){
@@ -21,8 +23,9 @@ void printArr(int row, int col,int arr[][col]){
   }
 }
 
-/* 
-Finds which elements are used in the array, we defined '~' to be unused
+
+/** 
+Finds which elements are used in the array, we defined '~' to be unused.
 */
 int findNumMazeElements(char * array, int length) {
   int i,count = 0;
@@ -33,6 +36,10 @@ int findNumMazeElements(char * array, int length) {
   return i;
 }
 
+
+/**
+This is a function that asks the user for the name of the text file of the maze then loads up the array full of chars in the order they are read from the file.
+ */
 void loadCharArrFromFile(char * buff){
   FILE * mazeFile = NULL;
   char fileName[30];
@@ -50,10 +57,18 @@ void loadCharArrFromFile(char * buff){
   fread(buff,SIZE,NUMELEM,mazeFile);
 }
 
+
+/**
+Fills the initial array, so we know what is inside
+ */
 void arrayFill(char * arr){
   for(int i = 0; i < MAXMAZESIZE; i ++) arr[i] = '~';
 }
 
+
+/**
+This takes the input parameters and then makes and fills a 2D array in order to use when solving the Maze.
+ */
 void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLength]) {
   int row=0, col=0;
   char c;
