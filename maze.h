@@ -17,6 +17,6 @@ void arrayFill(char * arr);
 void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLength]);
 
 /*traces maze recursivly*/
-void traceMaze(int length,int maze[][length], int row, int col);
+void traceMaze(int length,int maze[][length], int row, int col,int count);
 
 #endif
