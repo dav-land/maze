@@ -1,0 +1,16 @@
+
+test_maze.c,16
+int main(9,117
+
+maze.c,212
+#define MAXMAZESIZE 8,99
+#define SIZE 9,123
+#define NUMELEM 10,138
+void printArr(16,252
+int findNumMazeElements(30,528
+void loadCharArrFromFile(43,877
+void arrayFill(64,1297
+void createMazeMatrix(72,1498
+
+maze.h,21
+#define MAZE_H_2,16
