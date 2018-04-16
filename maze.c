@@ -55,6 +55,7 @@ void loadCharArrFromFile(char * buff){
     printf("File was not correctly oppened");
   
   fread(buff,SIZE,NUMELEM,mazeFile);
+  fclose(mazeFile);
 }
 
 
