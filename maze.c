@@ -21,6 +21,7 @@ void printArr(int row, int col,int arr[][col]){
 	printf("\n");
     }
   }
+  printf("\n");
 }
 
 
@@ -86,5 +87,21 @@ void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLengt
       row++;
       col = 0;
     }
+  }
+}
+
+void traceMaze(int length,int mz[][length],int row,int col){
+  if(row == length +1){
+    printArr(length,length,mz);
+    return ;
+  }else if(mz[row][col] != 0){
+    //do nothing
+  }else{
+    mz[row][col] = 2;
+    traceMaze(length,mz,row + 1,col);
+    traceMaze(length,mz,row,col + 1);
+    traceMaze(length,mz,row,col - 1);
+    traceMaze(length,mz,row - 1,col);
+    mz[row][col] = 0;
   }
 }

@@ -14,5 +14,5 @@ int main(){
   int mz[sideLength][sideLength];
   createMazeMatrix(arr, numMazeElements, sideLength, mz);
   printArr(sideLength,sideLength,mz);
-  
+  traceMaze(sideLength,mz,0,1);
 }
