@@ -93,7 +93,7 @@ void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLengt
 void traceMaze(int length,int mz[][length],int row,int col,int count){
   if(row == length +1){
     printArr(length,length,mz);
-    printf("Number of steps: %d\n",count);
+    printf("Number of steps: %d\n",count-1);
   }else if(mz[row][col] != 0){
     //do nothing
   }else{
