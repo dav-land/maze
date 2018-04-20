@@ -10,6 +10,7 @@ fi
 run ./test_maze <<EOF
 maze.txt
 EOF
+
 echo '-----------------------------------'
 
 exit 0
