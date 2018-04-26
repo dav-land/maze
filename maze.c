@@ -7,7 +7,6 @@
 
 #define MAXMAZESIZE 900
 #define SIZE 1
-#define NUMELEM 900
 
 
 /**
@@ -55,7 +54,7 @@ void loadCharArrFromFile(char * buff){
   if(!mazeFile)
     printf("File was not correctly oppened");
   
-  fread(buff,SIZE,NUMELEM,mazeFile);
+  fread(buff,SIZE,MAXMAZESIZE,mazeFile);
   fclose(mazeFile);
 }
 
