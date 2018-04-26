@@ -1,0 +1,9 @@
+#!/usr/bin/expect
+spawn ./test_maze
+expect "Please Enter Maze File then Press Enter\r"
+send -- "maze.txt\r"
+expect "Please enter starting row.\r"
+send -- "0\r"
+expect "Please enter starting column.\r"
+send -- "1\r"
+expect eof
