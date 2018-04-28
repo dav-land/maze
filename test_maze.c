@@ -15,7 +15,7 @@ int main(){
   createMazeMatrix(arr, numMazeElements, sideLength, mz);
   printArr(sideLength,sideLength,mz);
   doTraceMaze(sideLength, mz);
-  if (solutionFound(900, mz)) {
+  if (solutionFound(sideLength, mz)) {
       printf("Found a solution\n");
     }
   else {
