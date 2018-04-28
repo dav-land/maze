@@ -16,11 +16,11 @@ void printArr(int row, int col,int arr[][col]){
   for(int i = 0; i < row; i ++){
     for(int j = 0; j < col; j++){
       if(arr[i][j]==2)
-	printf("%s%c","\x1B[32m",175);
+	printf("%sO","\x1B[32m");
       else if(arr[i][j] == 1)
-	printf("%s0","\x1B[31m");
+	printf("%s|","\x1B[31m");
       else if(arr[i][j] == 0)
-	printf("%s0","\x1B[0m");
+	printf("%sO","\x1B[0m");
       if(j+1 == col)
 	printf("\n");
     }
@@ -51,7 +51,7 @@ void loadCharArrFromFile(char * buff){
   arrayFill(buff);
 
   //asks for user to imput file
-  printf("Please Enter Maze File then Press Enter\n");
+  printf("Please Enter Maze File then Press Enter. The maze file must contain .'s for empty spaces and 1's for walls. The file must also be a square that is up to 29x29.\n");
   scanf("%s",fileName);
 
   mazeFile = fopen(fileName,"r");
@@ -103,6 +103,10 @@ void doTraceMaze(int length, int mz[][length]){
   scanf("%d",&startRow);
   printf("Please enter starting column.\n");
   scanf("%d",&startCol);
+  if(mz[startRow][startCol] != 0){
+    printf("Invalid Starting Point.\n");
+    return;
+  }
   traceMaze(length,mz,startRow,startCol,0);
 }
 
@@ -110,16 +114,16 @@ void doTraceMaze(int length, int mz[][length]){
 this function recursivly finds the solution to a maze
  */
 void traceMaze(int length,int mz[][length],int row,int col,int count){
-  if(row == length  || col == -1 || col == length || row ==-1){
-    printArr(length,length,mz);
-    printf("%d, %d\n",row,col);
-    printf("Number of steps: %d\n\n",count-1);
-    printf("Success!!\n");
+  if((row == length  || col == -1 || col == length || row ==-1)){
+    if(count > 1){
+      printArr(length,length,mz);
+      printf("Number of steps: %d\n\n",count-1);
+      printf("Success!!\n");
+    }
   }else if(mz[row][col] != 0){
     //do nothing
   }else{
     mz[row][col] = 2;
-    //  printf("%d, %d\n",row,col);
     traceMaze(length,mz,row + 1,col,count+1);
     traceMaze(length,mz,row,col + 1,count+1);
     traceMaze(length,mz,row,col - 1,count+1);

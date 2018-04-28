@@ -1,6 +1,6 @@
 #!/usr/bin/expect
 spawn ./test_maze
-expect "Please Enter Maze File then Press Enter\r"
+expect "Please Enter Maze File then Press Enter. The maze file must contain .'s for empty spaces and 1's for walls. The file must also be a square that is up to 29x29.\r"
 send -- "maze.txt\r"
 expect "Please enter starting row.\r"
 send -- "0\r"
@@ -11,18 +11,18 @@ expect "Done, if solution couldn't be found nothing is printed"
 sleep 1
 
 spawn ./test_maze
-expect "Please Enter Maze File then Press Enter\r"
-send -- "maze1.txt\r"
+expect "Please Enter Maze File then Press Enter. The maze file must contain .'s for empty spaces and 1's for walls. The file must also be a square that is up to 29x29.\r"
+send -- "maze.txt\r"
 expect "Please enter starting row.\r"
 send -- "0\r"
 expect "Please enter starting column.\r"
-send -- "1\r"
-expect "Done, if solution couldn't be found nothing is printed"
+send -- "0\r"
+expect "Invalid Starting Point.\r"
 
 sleep 1
 
 spawn ./test_maze
-expect "Please Enter Maze File then Press Enter\r"
+expect "Please Enter Maze File then Press Enter. The maze file must contain .'s for empty spaces and 1's for walls. The file must also be a square that is up to 29x29.\r"
 send -- "maze2.txt\r"
 expect "Please enter starting row.\r"
 send -- "1\r"
@@ -31,4 +31,14 @@ send -- "1\r"
 expect "Done, if solution couldn't be found nothing is printed"
 send -- " \r"
 
-#expect eof
+sleep 1
+
+spawn ./test_maze
+expect "Please Enter Maze File then Press Enter. The maze file must contain .'s for empty spaces and 1's for walls. The file must also be a square that is up to 29x29.\r"
+send -- "maze1.txt\r"
+expect "Please enter starting row.\r"
+send -- "0\r"
+expect "Please enter starting column.\r"
+send -- "1\r"
+expect "Done, if solution couldn't be found nothing is printed"
+#send -- " \r"
