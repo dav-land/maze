@@ -41,6 +41,19 @@ int findNumMazeElements(char * array, int length) {
   return i;
 }
 
+/* 
+Finds if the maze contains a 2, which means there is a solution
+*/
+int solutionFound(int length, int mz[][length]) {
+  for (int i=0; i<length; i++) {
+    for (int j=0;j<length; j++) {
+      if (mz[i][j] == 2) return 1;
+    }
+  }
+
+  return 0;
+}
+
 
 /**
 This is a function that asks the user for the name of the text file of the maze then loads up the array full of chars in the order they are read from the file.

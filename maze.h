@@ -7,6 +7,10 @@ void printArr(int row, int col,int arr[][col]);
 /* find elements being used in order to get side length of matrix */
 int findNumMazeElements(char * array, int length); 
 
+/* determines if a solution was found by checking the maze for if it
+   contains 2  */
+int solutionFound(int length, int mz[][length]);
+
 /* Fills 1D array full of all of the different characters in text file*/
 void loadCharArrFromFile(char * buff);
 
