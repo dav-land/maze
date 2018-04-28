@@ -6,4 +6,29 @@ expect "Please enter starting row.\r"
 send -- "0\r"
 expect "Please enter starting column.\r"
 send -- "1\r"
-expect eof
+expect "Done, if solution couldn't be found nothing is printed"
+
+sleep 1
+
+spawn ./test_maze
+expect "Please Enter Maze File then Press Enter\r"
+send -- "maze1.txt\r"
+expect "Please enter starting row.\r"
+send -- "0\r"
+expect "Please enter starting column.\r"
+send -- "1\r"
+expect "Done, if solution couldn't be found nothing is printed"
+
+sleep 1
+
+spawn ./test_maze
+expect "Please Enter Maze File then Press Enter\r"
+send -- "maze2.txt\r"
+expect "Please enter starting row.\r"
+send -- "1\r"
+expect "Please enter starting column.\r"
+send -- "1\r"
+expect "Done, if solution couldn't be found nothing is printed"
+send -- " \r"
+
+#expect eof

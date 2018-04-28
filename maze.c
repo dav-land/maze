@@ -15,12 +15,17 @@ The is a function that prints out the array that has been made with given diment
 void printArr(int row, int col,int arr[][col]){
   for(int i = 0; i < row; i ++){
     for(int j = 0; j < col; j++){
-      printf("%d",arr[i][j]);
+      if(arr[i][j]==2)
+	printf("%s%c","\x1B[32m",175);
+      else if(arr[i][j] == 1)
+	printf("%s0","\x1B[31m");
+      else if(arr[i][j] == 0)
+	printf("%s0","\x1B[0m");
       if(j+1 == col)
 	printf("\n");
     }
   }
-  printf("\n");
+  printf("%s\n","\x1B[0m");
 }
 
 
@@ -105,13 +110,16 @@ void doTraceMaze(int length, int mz[][length]){
 this function recursivly finds the solution to a maze
  */
 void traceMaze(int length,int mz[][length],int row,int col,int count){
-  if(row == length +1 || col == -1 || col == length +1){
+  if(row == length  || col == -1 || col == length || row ==-1){
     printArr(length,length,mz);
+    printf("%d, %d\n",row,col);
     printf("Number of steps: %d\n\n",count-1);
+    printf("Success!!\n");
   }else if(mz[row][col] != 0){
     //do nothing
   }else{
     mz[row][col] = 2;
+    //  printf("%d, %d\n",row,col);
     traceMaze(length,mz,row + 1,col,count+1);
     traceMaze(length,mz,row,col + 1,count+1);
     traceMaze(length,mz,row,col - 1,count+1);
