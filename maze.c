@@ -7,7 +7,6 @@
 
 #define MAXMAZESIZE 900
 #define SIZE 1
-#define NUMELEM 900
 
 
 /**
@@ -21,6 +20,7 @@ void printArr(int row, int col,int arr[][col]){
 	printf("\n");
     }
   }
+  printf("\n");
 }
 
 
@@ -54,7 +54,7 @@ void loadCharArrFromFile(char * buff){
   if(!mazeFile)
     printf("File was not correctly oppened");
   
-  fread(buff,SIZE,NUMELEM,mazeFile);
+  fread(buff,SIZE,MAXMAZESIZE,mazeFile);
   fclose(mazeFile);
 }
 
@@ -86,5 +86,36 @@ void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLengt
       row++;
       col = 0;
     }
+  }
+}
+
+/**
+function to take in user input for the entrance to the maze.
+ */
+void doTraceMaze(int length, int mz[][length]){
+  int startRow,startCol;
+  printf("Please enter starting row.\n");
+  scanf("%d",&startRow);
+  printf("Please enter starting column.\n");
+  scanf("%d",&startCol);
+  traceMaze(length,mz,startRow,startCol,0);
+}
+
+/**
+this function recursivly finds the solution to a maze
+ */
+void traceMaze(int length,int mz[][length],int row,int col,int count){
+  if(row == length +1 || col == -1 || col == length +1){
+    printArr(length,length,mz);
+    printf("Number of steps: %d\n\n",count-1);
+  }else if(mz[row][col] != 0){
+    //do nothing
+  }else{
+    mz[row][col] = 2;
+    traceMaze(length,mz,row + 1,col,count+1);
+    traceMaze(length,mz,row,col + 1,count+1);
+    traceMaze(length,mz,row,col - 1,count+1);
+    traceMaze(length,mz,row - 1,col,count+1);
+    mz[row][col] = 0;
   }
 }
