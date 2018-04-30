@@ -4,7 +4,7 @@
 #include <string.h>
 #include "maze.h"
 
-
+// hard coded max length to be read and size of each char input 
 #define MAXMAZESIZE 900
 #define SIZE 1
 
@@ -13,14 +13,15 @@
 The is a function that prints out the array that has been made with given dimention
  */
 void printArr(int row, int col,int arr[][col]){
+  // loop through each element
   for(int i = 0; i < row; i ++){
     for(int j = 0; j < col; j++){
       if(arr[i][j]==2)
-	printf("%sO","\x1B[32m");
+	printf("%sO","\x1B[32m"); // green 0
       else if(arr[i][j] == 1)
-	printf("%s|","\x1B[31m");
+	printf("%s|","\x1B[31m"); // red line
       else if(arr[i][j] == 0)
-	printf("%sO","\x1B[0m");
+	printf("%sO","\x1B[0m"); // white 0
       if(j+1 == col)
 	printf("\n");
     }
@@ -36,7 +37,7 @@ int findNumMazeElements(char * array, int length) {
   int i,count = 0;
   for(i=0;i<length;i++) {
     if(array[i] != '\n') count ++;
-    if(array[i]=='~') break;
+    if(array[i]=='~') break; // first unsed element, stop looping through
   }
   return i;
 }
@@ -55,10 +56,14 @@ void loadCharArrFromFile(char * buff){
   scanf("%s",fileName);
 
   mazeFile = fopen(fileName,"r");
-  
-  if(!mazeFile)
+ 
+  // make sure mazeFile was opened 
+  if(!mazeFile) {
     printf("File was not correctly oppened");
-  
+    return;
+  }
+
+  // read into the buffer array
   fread(buff,SIZE,MAXMAZESIZE,mazeFile);
   fclose(mazeFile);
 }
@@ -79,12 +84,13 @@ void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLengt
   int row=0, col=0;
   char c;
   
+  // loop through
   for (int i = 0; i < length; i++){
     c = arr[i];
     
     if(c == '\n') continue;
-    if(c == '.') mz[row][col] = 0;
-    else mz[row][col] = 1;
+    if(c == '.') mz[row][col] = 0; // open path
+    else mz[row][col] = 1; // wall
     
     col++;
     if(col == sideLength){
@@ -95,7 +101,7 @@ void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLengt
 }
 
 /**
-function to take in user input for the entrance to the maze.
+function to take in user input for the entrance to the maze, and then calls function to solve maze
  */
 void doTraceMaze(int length, int mz[][length]){
   int startRow,startCol;
@@ -107,6 +113,7 @@ void doTraceMaze(int length, int mz[][length]){
     printf("Invalid Starting Point.\n");
     return;
   }
+  // solve the maze
   traceMaze(length,mz,startRow,startCol,0);
 }
 
@@ -114,8 +121,9 @@ void doTraceMaze(int length, int mz[][length]){
 this function recursivly finds the solution to a maze
  */
 void traceMaze(int length,int mz[][length],int row,int col,int count){
+  // end of maze has been reached
   if((row == length  || col == -1 || col == length || row ==-1)){
-    if(count > 1){
+    if(count > 1){ // make sure movement did occur, starting poisition is not a solution
       printArr(length,length,mz);
       printf("Number of steps: %d\n\n",count-1);
       printf("Success!!\n");
@@ -123,7 +131,10 @@ void traceMaze(int length,int mz[][length],int row,int col,int count){
   }else if(mz[row][col] != 0){
     //do nothing
   }else{
+    // position has been visited
     mz[row][col] = 2;
+   
+    // order of movemement: Down, Right, Left, Up
     traceMaze(length,mz,row + 1,col,count+1);
     traceMaze(length,mz,row,col + 1,count+1);
     traceMaze(length,mz,row,col - 1,count+1);
