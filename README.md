@@ -3,7 +3,7 @@
 Welcome to our Final Project! We will be doing cool things with mazes
 
 ## Installing needed packages: 
-sudo apt-get install expect
+`sudo apt-get install expect`
 
 ## Usage: 
 ```
