@@ -137,12 +137,11 @@ void traceMaze(int length,int mz[][length],int row,int col,int count){
   }else{
     // position has been visited
     mz[row][col] = 2;
-   
     // order of movemement: Down, Right, Left, Up
     traceMaze(length,mz,row + 1,col,count+1);
     traceMaze(length,mz,row,col + 1,count+1);
     traceMaze(length,mz,row,col - 1,count+1);
     traceMaze(length,mz,row - 1,col,count+1);
-    mz[row][col] = 0;
+    //    mz[row][col] = 0; //uncomment in order to find all solutions, does not show dead ends tried.
   }
 }

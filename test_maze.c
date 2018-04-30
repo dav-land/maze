@@ -4,7 +4,10 @@
 #include <string.h>
 #include <math.h>
 #include "maze.h"
-
+/*
+ * A solution to the maze is defined as getting off of the maze in any directio
+ * does not include if a starting point is on the side.
+ */
 
 int main(){
   char arr[900];
