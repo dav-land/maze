@@ -4,12 +4,12 @@
 #include <string.h>
 #include "maze.h"
 
-// hard coded max length to be read and size of each char input 
+// hard coded max length to be read and size of each char input
 #define MAXMAZESIZE 900
 #define SIZE 1
 
 
-/**
+/*
 The is a function that prints out the array that has been made with given dimention
  */
 void printArr(int row, int col,int arr[][col]){
@@ -21,7 +21,7 @@ void printArr(int row, int col,int arr[][col]){
       else if(arr[i][j] == 1){
         if (i == 0 || i == row-1)
 	  printf("%s_","\x1B[31m");
-	else	  
+	else
 	  printf("%s|","\x1B[31m"); // red line
       }
       else if(arr[i][j] == 0)
@@ -34,7 +34,7 @@ void printArr(int row, int col,int arr[][col]){
 }
 
 
-/** 
+/**
 Finds which elements are used in the array, we defined '~' to be unused.
 */
 int findNumMazeElements(char * array, int length) {
@@ -48,7 +48,8 @@ int findNumMazeElements(char * array, int length) {
 
 
 /**
-This is a function that asks the user for the name of the text file of the maze then loads up the array full of chars in the order they are read from the file.
+This is a function that asks the user for the name of the text file of the maze
+then loads up the array full of chars in the order they are read from the file.
  */
 void loadCharArrFromFile(char * buff){
   FILE * mazeFile = NULL;
@@ -56,12 +57,14 @@ void loadCharArrFromFile(char * buff){
   arrayFill(buff);
 
   //asks for user to imput file
-  printf("Please Enter Maze File then Press Enter. The maze file must contain .'s for empty spaces and 1's for walls. The file must also be a square that is up to 29x29.\n");
+  printf("Please Enter Maze File then Press Enter. The maze file must contain
+  .'s for empty spaces and 1's for walls. The file must also be a square that is
+  up to 29x29.\n");
   scanf("%s",fileName);
 
   mazeFile = fopen(fileName,"r");
- 
-  // make sure mazeFile was opened 
+
+  // make sure mazeFile was opened
   if(!mazeFile) {
     printf("File was not correctly oppened");
     return;
@@ -82,20 +85,21 @@ void arrayFill(char * arr){
 
 
 /**
-This takes the input parameters and then makes and fills a 2D array in order to use when solving the Maze.
+This takes the input parameters and then makes and fills a 2D array in order to
+use when solving the Maze.
  */
 void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLength]) {
   int row=0, col=0;
   char c;
-  
+
   // loop through
   for (int i = 0; i < length; i++){
     c = arr[i];
-    
+
     if(c == '\n') continue;
     if(c == '.') mz[row][col] = 0; // open path
     else mz[row][col] = 1; // wall
-    
+
     col++;
     if(col == sideLength){
       row++;
@@ -105,7 +109,8 @@ void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLengt
 }
 
 /**
-function to take in user input for the entrance to the maze, and then calls function to solve maze
+function to take in user input for the entrance to the maze, and then calls
+function to solve maze
  */
 void doTraceMaze(int length, int mz[][length]){
   int startRow,startCol;
