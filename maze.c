@@ -11,23 +11,23 @@
 
 /*
 The is a function that prints out the array that has been made with given dimention
- */
+*/
 void printArr(int row, int col,int arr[][col]){
   // loop through each element
   for(int i = 0; i < row; i ++){
     for(int j = 0; j < col; j++){
       if(arr[i][j]==2)
-	printf("%sO","\x1B[32m"); // green 0
+      printf("%sO","\x1B[32m"); // green 0
       else if(arr[i][j] == 1){
         if (i == 0 || i == row-1)
-	  printf("%s_","\x1B[31m");
-	else
-	  printf("%s|","\x1B[31m"); // red line
+        printf("%s_","\x1B[31m");
+        else
+        printf("%s|","\x1B[31m"); // red line
       }
       else if(arr[i][j] == 0)
-	printf("%sO","\x1B[0m"); // white 0
+      printf("%sO","\x1B[0m"); // white 0
       if(j+1 == col)
-	printf("\n");
+      printf("\n");
     }
   }
   printf("%s\n","\x1B[0m");
@@ -50,7 +50,7 @@ int findNumMazeElements(char * array, int length) {
 /**
 This is a function that asks the user for the name of the text file of the maze
 then loads up the array full of chars in the order they are read from the file.
- */
+*/
 void loadCharArrFromFile(char * buff){
   FILE * mazeFile = NULL;
   char fileName[30];
@@ -78,7 +78,7 @@ void loadCharArrFromFile(char * buff){
 
 /**
 Fills the initial array, so we know what is inside
- */
+*/
 void arrayFill(char * arr){
   for(int i = 0; i < MAXMAZESIZE; i ++) arr[i] = '~';
 }
@@ -87,7 +87,7 @@ void arrayFill(char * arr){
 /**
 This takes the input parameters and then makes and fills a 2D array in order to
 use when solving the Maze.
- */
+*/
 void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLength]) {
   int row=0, col=0;
   char c;
@@ -111,7 +111,7 @@ void createMazeMatrix(char * arr, int length, int sideLength, int mz[][sideLengt
 /**
 function to take in user input for the entrance to the maze, and then calls
 function to solve maze
- */
+*/
 void doTraceMaze(int length, int mz[][length]){
   int startRow,startCol;
   printf("Please enter starting row.\n");
@@ -128,7 +128,7 @@ void doTraceMaze(int length, int mz[][length]){
 
 /**
 this function recursivly finds the solution to a maze
- */
+*/
 void traceMaze(int length,int mz[][length],int row,int col,int count){
   // end of maze has been reached
   if((row == length  || col == -1 || col == length || row ==-1)){
