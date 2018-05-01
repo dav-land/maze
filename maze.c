@@ -57,9 +57,7 @@ void loadCharArrFromFile(char * buff){
   arrayFill(buff);
 
   //asks for user to imput file
-  printf("Please Enter Maze File then Press Enter. The maze file must contain
-  .'s for empty spaces and 1's for walls. The file must also be a square that is
-  up to 29x29.\n");
+  printf("Please Enter Maze File then Press Enter. The maze file must contain .'s for empty spaces and 1's for walls. The file must also be a square that is up to 29x29.\n");
   scanf("%s",fileName);
 
   mazeFile = fopen(fileName,"r");
@@ -147,6 +145,6 @@ void traceMaze(int length,int mz[][length],int row,int col,int count){
     traceMaze(length,mz,row,col + 1,count+1);
     traceMaze(length,mz,row,col - 1,count+1);
     traceMaze(length,mz,row - 1,col,count+1);
-    //    mz[row][col] = 0; //uncomment in order to find all solutions, does not show dead ends tried.
+    mz[row][col] = 0; //uncomment in order to find all solutions, does not show dead ends tried.
   }
 }
