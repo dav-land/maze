@@ -20,9 +20,9 @@ void printArr(int row, int col,int arr[][col]){
       printf("%sO","\x1B[32m"); // green 0
       else if(arr[i][j] == 1){
         if (i == 0 || i == row-1)
-        printf("%s_","\x1B[31m");
+          printf("%s_","\x1B[31m");
         else
-        printf("%s|","\x1B[31m"); // red line
+          printf("%s|","\x1B[31m"); // red line
       }
       else if(arr[i][j] == 0)
       printf("%sO","\x1B[0m"); // white 0
